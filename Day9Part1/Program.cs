@@ -128,12 +128,12 @@ namespace Day9Part1
 
             foreach (string city in listCities)
             {
-                List<string> templistCities = new List<string>(listCities);
+                List<string> otherCities = new List<string>(listCities);
 
                 
-                templistCities.Remove(city);
+                otherCities.Remove(city);
 
-                int dist = DistanceMin(city, templistCities, dictionary);
+                int dist = DistanceMin(city, otherCities, dictionary);
                 Console.WriteLine(dist);
             }
 
@@ -149,12 +149,12 @@ namespace Day9Part1
                
                 tempOtherCities.Remove(city2);
 
-                if (tempOtherCities.Count != 0)
+                if (tempOtherCities.Count != 0) 
                 {
                     int dist1 = DistanceMin(city2, tempOtherCities, dictionary) + dictionary[city1][city2];
                     dist = Math.Min(dist, dist1);
                 }
-                else
+                else // quelle est la distance minimale pour relier 0 villes ? (cas particulier
                 {
                     int dist1 = dictionary[city1][city2];
                     dist = Math.Min(dist, dist1);
